@@ -1,0 +1,88 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files (large)
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+
+# Models (large)
+models/*.joblib
+models/*.pkl
+models/*.h5
+!models/.gitkeep
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Great Expectations
+great_expectations/uncommitted/
+great_expectations/checkpoints/
+
+# Reports
+reports/*.html
+reports/*.json
+!reports/.gitkeep
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Cache
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes (if local)
+postgres_data/
+mlflow_data/
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Hadoop (Windows)
+hadoop/
+
+# MLflow database
+mlflow.db
+
+# Spark
+spark-warehouse/
+derby.log
+metastore_db/

@@ -1,0 +1,68 @@
+# ===========================================
+# Configuracoes do Projeto Fraud Detection
+# ===========================================
+
+# Dados
+data:
+  raw_path: "data/raw"
+  processed_path: "data/processed"
+  dataset_name: "creditcard.csv"
+  kaggle_dataset: "mlg-ulb/creditcardfraud"
+
+# Modelo
+model:
+  experiment_name: "fraud_detection"
+  model_name: "fraud_detection_model"
+
+  # Hiperparametros XGBoost
+  params:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    eval_metric: "aucpr"
+    random_state: 42
+
+  # Balanceamento
+  smote_strategy: 0.5
+
+  # Threshold minimo para deploy
+  min_average_precision: 0.5
+  min_f1_score: 0.4
+
+# Feature Engineering
+features:
+  window_sizes:
+    - 50
+    - 100
+    - 1000
+
+  # Features a criar
+  create:
+    - avg_amount
+    - std_amount
+    - tx_count
+    - amount_zscore
+    - amount_percentile
+
+# Serving
+serving:
+  host: "0.0.0.0"
+  port: 8000
+  model_path: "models/fraud_model.joblib"
+
+# Monitoramento
+monitoring:
+  drift_threshold: 0.3  # 30% das features com drift = retraining
+  check_interval_hours: 24
+
+  # Metricas a monitorar
+  metrics:
+    - average_precision
+    - f1_score
+    - precision
+    - recall
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
